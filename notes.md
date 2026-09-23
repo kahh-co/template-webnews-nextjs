@@ -3,7 +3,7 @@
 **Platform Target:** Antigravity  
 **Framework:** Next.js 14 (App Router)  
 **Tipe:** Template Website Berita Publik (tanpa CMS, data statis/mock)  
-**Versi Dokumen:** 1.0  
+**Versi Dokumen:** 1.1 (update: 23 September 2026 — situs dikunci LIGHT MODE, toggle dark/light dinonaktifkan)
 **Tanggal:19 September 2026
 
 ---
@@ -355,3 +355,72 @@ npm run build
 ---
 
 *Dokumen ini dibuat sebagai panduan pengembangan template. Semua nama, data berita, dan konten yang digunakan bersifat fiktif untuk keperluan demonstrasi.*
+
+---
+
+## 13. PANDUAN UPDATE & PERAWATAN WEBSITE (v1.1)
+
+> Status terkini (23 Sep 2026): situs **dikunci LIGHT MODE**. Seluruh class `dark:` sudah dibersihkan, `ThemeToggle` dinonaktifkan (return null), `ThemeProvider` selalu light, dan `globals.css` memakai `@custom-variant dark` yang tidak pernah cocok + `color-scheme: light`. Tujuannya: tampilan **identik di semua perangkat** (tidak lagi mengikuti dark mode OS teman/pembaca). Jangan tambah class `dark:` baru kecuali kamu siap mengaktifkan ulang dark mode (lihat 13.7).
+
+### 13.1 Cara menjalankan & build
+
+```bash
+npm install      # sekali saja
+npm run dev      # coba di http://localhost:3000
+npm run build    # wajib lolos sebelum deploy/publish
+npm run lint     # cek warning (1 error lama di cari/page.tsx boleh diabaikan)
+```
+
+### 13.2 Ganti identitas media (nama, logo, tagline)
+
+| Yang diganti | File | Caranya |
+|---|---|---|
+| Nama "NUSANTARA KINI" + tagline | `src/components/layout/Navbar.tsx` (±baris 95-105), `src/components/layout/Footer.tsx` (±baris 82-90) | Ganti teks logo & tagline di kedua file |
+| Judul tab browser & SEO | `src/app/layout.tsx` (`metadata`) | Ganti `title`, `description`, `keywords` |
+| Ikon logo merah | `Navbar.tsx` / `Footer.tsx` (`Newspaper` icon + `bg-red-700`) | Ganti icon Lucide atau warna `bg-*` |
+| Warna utama merah | `src/app/globals.css` (`--primary`), class `bg-red-700`/`text-red-700` di komponen | Ganti konsisten di semua file; badge kategori di `src/components/ui/CategoryBadge.tsx` |
+
+### 13.3 Tambah / edit / hapus berita
+
+1. Buka `src/lib/data/berita.ts` → array `beritaList`.
+2. Duplikat satu objek berita, isi field wajib: `id` (unik), `slug` (unik, huruf-kecil-strip), `judul`, `excerpt`, `isi` (array paragraf), `gambar`, `kategori` (slug kategori, lihat 13.4), `penulis {nama, peran, avatar}`, `tanggalTerbit` (ISO, mis. `"2026-09-23T07:00:00Z"`), `populer`, `headline`, `tags`, `estimasiBaca`, `captionGambar`.
+3. Simpan → headline otomatis diambil dari `getHeadlineBerita()`, ticker dari `getBeritaTrending()`, sidebar dari `getBeritaPopuler()`. Tidak perlu edit halaman satu per satu.
+4. Hapus berita = hapus objeknya dari array. Jika slug dipakai di link manual, perbarui linknya.
+
+### 13.4 Tambah / edit kategori
+
+1. Buka `src/lib/data/kategori.ts` → array `kategoriList` (`id, slug, nama, deskripsi, warna {bg, text, border, badgeBg, badgeText}`).
+2. Untuk warna badge baru pakai pasangan kontras aman (contoh: `bg-cyan-700 text-white`), jangan `*-500/600` dengan teks putih (kontras kurang).
+3. Halaman `/kategori/[slug]` dan menu navbar dibuat otomatis dari array ini (`generateStaticParams`). Tidak perlu buat file halaman baru.
+
+### 13.5 Ganti gambar
+
+- Gambar lokal: taruh di `public/images/`, referensikan sebagai `/images/nama.jpg`.
+- Gambar luar (Unsplash dsb.): langsung pakai URL di field `gambar`. Jika gambar gagal load, `NewsCard` otomatis fallback ke placeholder — biarkan logic `handleImageError` apa adanya.
+- Hero memakai `next/image` + gradient overlay; teks putih di atas foto aman selama gradient `from-black/95` di `HeroSection.tsx` tidak dihapus.
+
+### 13.6 Bagian yang sering diutak-atik
+
+| Kebutuhan | File |
+|---|---|
+| Headline besar + "Sorotan Terkini" | `src/components/sections/HeroSection.tsx`, data dari `src/app/page.tsx` |
+| Ticker merah berjalan | `src/components/layout/BreakingNewsTicker.tsx` (kecepatan di `globals.css` → `.animate-marquee 35s`) |
+| Sidebar populer / tag / iklan | `src/components/sections/Sidebar.tsx` (`defaultTags`, slot iklan → ganti `href="/tentang#kontak"`) |
+| Form newsletter footer | `src/components/layout/Footer.tsx` (`handleSubscribe` masih mock — sambungkan ke API email bila perlu) |
+| Pencarian | `src/app/cari/page.tsx` + fungsi `cariBerita()` di `lib/data/berita.ts` |
+| Tentang redaksi / tim / kontak | `src/app/tentang/page.tsx` (`redaksiTeam`, alamat, email) |
+
+### 13.7 Kalau suatu saat mau mengaktifkan dark mode lagi
+
+1. Hapus baris `@custom-variant dark ...` di `globals.css`, kembalikan blok `.dark` + `color-scheme`.
+2. Kembalikan `ThemeProvider` versi toggle (cek git history) dan `ThemeToggle` tombol asli, pasang lagi di `Navbar`.
+3. Kembalikan class `dark:` di komponen (cek git diff v1.1) dan uji di OS terang + gelap sebelum publish.
+
+### 13.8 Checklist sebelum publish/update
+
+- [ ] `npm run build` sukses tanpa error
+- [ ] Cek 360px (HP kecil), 768px (tablet), 1280px (desktop): hero tidak kepotong, grid 1→2→3 kolom, sidebar tidak overlap, footer newsletter tidak overflow
+- [ ] Semua badge kategori terbaca (terutama Olahraga/amber)
+- [ ] Ticker berjalan & bisa diklik, tidak bikin scroll horizontal
+- [ ] Pinjam 1 HP teman (terutama yang dark mode OS) untuk konfirmasi tampilan identik
+- [ ] Slug berita baru dibuka satu per satu (tidak 404), gambar tidak broken
