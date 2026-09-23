@@ -53,7 +53,7 @@ export default async function CategoryPage({
   return (
     <div className="space-y-8">
       {/* Breadcrumb Navigation */}
-      <nav className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <nav className="flex items-center gap-2 text-xs text-zinc-500">
         <Link href="/" className="hover:text-red-600 flex items-center gap-1">
           <Home className="w-3.5 h-3.5" />
           Beranda
@@ -61,7 +61,7 @@ export default async function CategoryPage({
         <span>/</span>
         <span className="text-zinc-400">Kategori</span>
         <span>/</span>
-        <span className="font-semibold text-zinc-900 dark:text-zinc-100 uppercase tracking-wider">
+        <span className="font-semibold text-zinc-900 uppercase tracking-wider">
           {kategori.nama}
         </span>
       </nav>
@@ -102,7 +102,7 @@ export default async function CategoryPage({
               ))}
             </div>
           ) : (
-            <div className="p-12 text-center bg-zinc-50 dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800">
+            <div className="p-12 text-center bg-zinc-50 rounded-2xl border border-zinc-200">
               <p className="text-zinc-500">Belum ada berita dalam kategori ini.</p>
               <Link
                 href="/"
@@ -115,10 +115,10 @@ export default async function CategoryPage({
 
           {/* Pagination mockup */}
           {berita.length > 0 && (
-            <div className="flex items-center justify-between pt-6 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="flex items-center justify-between pt-6 border-t border-zinc-200">
               <button
                 disabled
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-100 text-zinc-400 cursor-not-allowed"
               >
                 <ChevronLeft className="w-4 h-4" />
                 Sebelumnya
@@ -132,7 +132,7 @@ export default async function CategoryPage({
 
               <button
                 disabled
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-not-allowed"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-zinc-100 text-zinc-400 cursor-not-allowed"
               >
                 Selanjutnya
                 <ChevronRight className="w-4 h-4" />
@@ -142,7 +142,7 @@ export default async function CategoryPage({
         </div>
 
         {/* Right Column: Sidebar */}
-        <div className="lg:col-span-4 sticky top-28">
+        <div className="lg:col-span-4 lg:sticky lg:top-28 self-start">
           <Sidebar beritaPopuler={populer} />
         </div>
       </div>

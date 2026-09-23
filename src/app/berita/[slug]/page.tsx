@@ -62,7 +62,7 @@ export default async function DetailBeritaPage({
   return (
     <div className="space-y-10">
       {/* 1. Breadcrumb Nav */}
-      <nav className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 overflow-x-auto whitespace-nowrap">
+      <nav className="flex items-center gap-2 text-xs text-zinc-500 overflow-x-auto whitespace-nowrap">
         <Link href="/" className="hover:text-red-600 flex items-center gap-1">
           <Home className="w-3.5 h-3.5" />
           Beranda
@@ -89,24 +89,24 @@ export default async function DetailBeritaPage({
             <div className="flex items-center gap-2">
               <CategoryBadge categorySlug={berita.kategori} size="md" />
               {berita.headline && (
-                <span className="text-xs font-bold uppercase tracking-wider text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/60 px-2 py-0.5 rounded">
+                <span className="text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded">
                   Headline
                 </span>
               )}
             </div>
 
-            <h1 className="font-serif font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-zinc-950 dark:text-white leading-[1.18] tracking-tight">
+            <h1 className="font-serif font-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-zinc-950 leading-[1.18] tracking-tight">
               {berita.judul}
             </h1>
 
-            <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-300 leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-zinc-600 leading-relaxed font-normal">
               {berita.excerpt}
             </p>
 
             {/* Author & Meta Box */}
-            <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-zinc-200 dark:border-zinc-800 text-xs sm:text-sm">
+            <div className="flex flex-wrap items-center justify-between gap-4 py-4 border-y border-zinc-200 text-xs sm:text-sm">
               <div className="flex items-center gap-3">
-                <div className="relative w-11 h-11 rounded-full overflow-hidden bg-zinc-200 dark:bg-zinc-800 shrink-0">
+                <div className="relative w-11 h-11 rounded-full overflow-hidden bg-zinc-200 shrink-0">
                   <Image
                     src={
                       berita.penulis.avatar ||
@@ -118,16 +118,16 @@ export default async function DetailBeritaPage({
                   />
                 </div>
                 <div>
-                  <div className="font-bold text-zinc-900 dark:text-white">
+                  <div className="font-bold text-zinc-900">
                     {berita.penulis.nama}
                   </div>
-                  <div className="text-zinc-500 dark:text-zinc-400 text-xs">
+                  <div className="text-zinc-500 text-xs">
                     {berita.penulis.peran || "Jurnalis Redaksi"}
                   </div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 text-zinc-500 dark:text-zinc-400 text-xs">
+              <div className="flex items-center gap-4 text-zinc-500 text-xs">
                 <div className="flex items-center gap-1.5">
                   <Clock className="w-3.5 h-3.5" />
                   <span>{formatTanggalLengkap(berita.tanggalTerbit)}</span>
@@ -148,7 +148,7 @@ export default async function DetailBeritaPage({
 
           {/* Main Article Image */}
           <div className="space-y-2">
-            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-100 dark:bg-zinc-900 shadow-md">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-2xl overflow-hidden bg-zinc-100 shadow-md">
               <Image
                 src={berita.gambar}
                 alt={berita.judul}
@@ -159,22 +159,22 @@ export default async function DetailBeritaPage({
               />
             </div>
             {berita.captionGambar && (
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 italic px-1 text-center sm:text-left">
+              <p className="text-xs text-zinc-500 italic px-1 text-center sm:text-left">
                 Foto: {berita.captionGambar}
               </p>
             )}
           </div>
 
           {/* Article Body */}
-          <div className="prose prose-zinc dark:prose-invert max-w-none text-zinc-800 dark:text-zinc-200 text-base sm:text-lg leading-relaxed space-y-6 pt-2">
+          <div className="max-w-none text-zinc-800 text-base sm:text-lg leading-relaxed space-y-6 pt-2">
             {berita.isi.map((paragraf, index) => {
               // Highlight or blockquote mid-article
               if (index === 1) {
                 return (
                   <React.Fragment key={index}>
                     <p className="leading-relaxed">{paragraf}</p>
-                    <blockquote className="my-6 p-4 sm:p-6 bg-red-50/70 dark:bg-red-950/30 border-l-4 border-red-600 rounded-r-xl not-italic">
-                      <p className="font-serif font-bold text-base sm:text-xl text-zinc-900 dark:text-zinc-100 leading-snug m-0">
+                    <blockquote className="my-6 p-4 sm:p-6 bg-red-50/70 border-l-4 border-red-600 rounded-r-xl not-italic">
+                      <p className="font-serif font-bold text-base sm:text-xl text-zinc-900 leading-snug m-0">
                         &ldquo;Informasi yang valid dan berimbang adalah kunci utama pembangunan masyarakat yang cerdas dan kritis.&rdquo;
                       </p>
                     </blockquote>
@@ -190,7 +190,7 @@ export default async function DetailBeritaPage({
           </div>
 
           {/* Tags */}
-          <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-3">
+          <div className="pt-6 border-t border-zinc-200 space-y-3">
             <div className="flex items-center gap-2 text-xs font-bold text-zinc-500 uppercase tracking-wider">
               <Tag className="w-4 h-4" />
               Topik Terkait:
@@ -200,7 +200,7 @@ export default async function DetailBeritaPage({
                 <Link
                   key={tag}
                   href={`/cari?q=${encodeURIComponent(tag)}`}
-                  className="px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 hover:bg-red-600 hover:text-white dark:hover:bg-red-600 dark:hover:text-white transition-colors"
+                  className="px-3 py-1 rounded-full text-xs font-medium bg-zinc-100 text-zinc-700 hover:bg-red-600 hover:text-white transition-colors"
                 >
                   #{tag}
                 </Link>
@@ -209,23 +209,23 @@ export default async function DetailBeritaPage({
           </div>
 
           {/* Bottom Share Bar */}
-          <div className="p-4 bg-zinc-50 dark:bg-zinc-900/60 rounded-xl border border-zinc-200/80 dark:border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <span className="font-serif font-bold text-sm text-zinc-900 dark:text-white">
+          <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span className="font-serif font-bold text-sm text-zinc-900">
               Suka artikel ini? Bagikan ke jejaring Anda!
             </span>
             <ShareButtons title={berita.judul} />
           </div>
 
           {/* Related Articles Section (3 cards) */}
-          <div className="pt-10 border-t-2 border-zinc-200 dark:border-zinc-800 space-y-6">
+          <div className="pt-10 border-t-2 border-zinc-200 space-y-6">
             <div className="flex items-center justify-between">
-              <h3 className="font-serif font-bold text-xl text-zinc-900 dark:text-white flex items-center gap-2">
+              <h3 className="font-serif font-bold text-xl text-zinc-900 flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-red-600" />
                 Berita Terkait Lainnya
               </h3>
               <Link
                 href={`/kategori/${berita.kategori}`}
-                className="text-xs sm:text-sm font-semibold text-red-600 dark:text-red-400 hover:underline"
+                className="text-xs sm:text-sm font-semibold text-red-600 hover:underline"
               >
                 Lihat di Kategori {kategori?.nama} →
               </Link>
@@ -240,7 +240,7 @@ export default async function DetailBeritaPage({
         </article>
 
         {/* Sidebar Column */}
-        <aside className="lg:col-span-4 sticky top-28 space-y-8">
+        <aside className="lg:col-span-4 lg:sticky lg:top-28 self-start space-y-8">
           <Sidebar beritaPopuler={populer} tags={berita.tags} />
         </aside>
       </div>

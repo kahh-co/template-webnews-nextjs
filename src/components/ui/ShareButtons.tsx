@@ -42,7 +42,7 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
 
   return (
     <div className="flex flex-wrap items-center gap-2.5">
-      <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-500 dark:text-zinc-400 mr-1">
+      <span className="flex items-center gap-1.5 text-xs font-semibold text-zinc-500 mr-1">
         <Share2 className="w-3.5 h-3.5" />
         Bagikan:
       </span>
@@ -64,7 +64,7 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
       <button
         onClick={handleShareTwitter}
         type="button"
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-900 text-white dark:bg-zinc-800 dark:text-zinc-200 hover:bg-zinc-800 dark:hover:bg-zinc-700 transition-colors cursor-pointer"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-900 text-white hover:bg-zinc-800 transition-colors cursor-pointer"
         title="Bagikan ke X / Twitter"
       >
         <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
@@ -77,13 +77,13 @@ export default function ShareButtons({ title }: ShareButtonsProps) {
       <button
         onClick={handleCopy}
         type="button"
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-200 transition-colors cursor-pointer"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-zinc-100 hover:bg-zinc-200 text-zinc-700 transition-colors cursor-pointer"
         title="Salin tautan artikel"
       >
         {copied ? (
           <>
             <Check className="w-3.5 h-3.5 text-emerald-500" />
-            <span className="text-emerald-600 dark:text-emerald-400 font-medium">Tersalin!</span>
+            <span className="text-emerald-600 font-medium">Tersalin!</span>
           </>
         ) : (
           <>

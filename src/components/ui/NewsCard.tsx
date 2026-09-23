@@ -32,11 +32,11 @@ export default function NewsCard({
     return (
       <article
         className={cn(
-          "group flex flex-col sm:flex-row gap-4 p-3.5 bg-white dark:bg-zinc-900/70 border border-zinc-200/80 dark:border-zinc-800 rounded-xl hover:border-red-500/40 dark:hover:border-red-500/40 hover:shadow-md transition-all duration-300",
+          "group flex flex-col sm:flex-row gap-4 p-3.5 bg-white border border-zinc-200/80 rounded-xl hover:border-red-500/40 hover:shadow-md transition-all duration-300",
           className
         )}
       >
-        <div className="relative w-full sm:w-44 sm:h-32 h-48 shrink-0 overflow-hidden rounded-lg bg-zinc-100 dark:bg-zinc-800">
+        <div className="relative w-full sm:w-44 sm:h-32 h-48 shrink-0 overflow-hidden rounded-lg bg-zinc-100">
           <Image
             src={imgSrc}
             alt={berita.judul}
@@ -53,16 +53,16 @@ export default function NewsCard({
         <div className="flex flex-col justify-between flex-1 min-w-0">
           <div>
             <Link href={`/berita/${berita.slug}`} className="block focus:outline-none">
-              <h3 className="font-serif font-bold text-base sm:text-lg text-zinc-900 dark:text-zinc-100 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors line-clamp-2 leading-snug">
+              <h3 className="font-serif font-bold text-base sm:text-lg text-zinc-900 group-hover:text-red-600 transition-colors line-clamp-2 leading-snug">
                 {berita.judul}
               </h3>
             </Link>
-            <p className="mt-1.5 text-xs sm:text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2 leading-relaxed">
+            <p className="mt-1.5 text-xs sm:text-sm text-zinc-700 line-clamp-2 leading-relaxed">
               {berita.excerpt}
             </p>
           </div>
 
-          <div className="flex items-center gap-3 mt-3 pt-2 text-xs text-zinc-500 dark:text-zinc-400 border-t border-zinc-100 dark:border-zinc-800/60">
+          <div className="flex items-center gap-3 mt-3 pt-2 text-xs text-zinc-600 border-t border-zinc-100">
             <span className="flex items-center gap-1 font-medium truncate max-w-[120px]">
               <User className="w-3.5 h-3.5 shrink-0" />
               {berita.penulis.nama}
@@ -82,11 +82,11 @@ export default function NewsCard({
     return (
       <article
         className={cn(
-          "group flex items-start gap-3 py-3 border-b border-zinc-200/60 dark:border-zinc-800/60 last:border-b-0",
+          "group flex items-start gap-3 py-3 border-b border-zinc-200/60 last:border-b-0",
           className
         )}
       >
-        <div className="relative w-20 h-20 shrink-0 overflow-hidden rounded-md bg-zinc-100 dark:bg-zinc-800">
+        <div className="relative w-20 h-20 shrink-0 overflow-hidden rounded-md bg-zinc-100">
           <Image
             src={imgSrc}
             alt={berita.judul}
@@ -102,11 +102,11 @@ export default function NewsCard({
             <CategoryBadge categorySlug={berita.kategori} size="sm" />
           </div>
           <Link href={`/berita/${berita.slug}`} className="block">
-            <h4 className="font-serif font-bold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors line-clamp-2 leading-snug">
+            <h4 className="font-serif font-bold text-sm text-zinc-900 group-hover:text-red-600 transition-colors line-clamp-2 leading-snug">
               {berita.judul}
             </h4>
           </Link>
-          <span className="block text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
+          <span className="block text-[11px] text-zinc-600 mt-1">
             {formatWaktuRelatif(berita.tanggalTerbit)}
           </span>
         </div>
@@ -158,11 +158,11 @@ export default function NewsCard({
   return (
     <article
       className={cn(
-        "group flex flex-col h-full bg-white dark:bg-zinc-900/80 border border-zinc-200/80 dark:border-zinc-800 rounded-2xl overflow-hidden hover:border-red-500/40 dark:hover:border-red-500/40 hover:shadow-xl transition-all duration-300",
+        "group flex flex-col h-full bg-white border border-zinc-200/80 rounded-2xl overflow-hidden hover:border-red-500/40 hover:shadow-xl transition-all duration-300",
         className
       )}
     >
-      <div className="relative w-full aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+      <div className="relative w-full aspect-video overflow-hidden bg-zinc-100">
         <Image
           src={imgSrc}
           alt={berita.judul}
@@ -179,16 +179,16 @@ export default function NewsCard({
       <div className="flex flex-col justify-between flex-1 p-5">
         <div>
           <Link href={`/berita/${berita.slug}`} className="block focus:outline-none">
-            <h3 className="font-serif font-bold text-lg sm:text-xl text-zinc-900 dark:text-zinc-100 group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors line-clamp-2 leading-snug">
+            <h3 className="font-serif font-bold text-lg sm:text-xl text-zinc-900 group-hover:text-red-600 transition-colors line-clamp-2 leading-snug">
               {berita.judul}
             </h3>
           </Link>
-          <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3 leading-relaxed">
+          <p className="mt-2 text-sm text-zinc-700 line-clamp-3 leading-relaxed">
             {berita.excerpt}
           </p>
         </div>
 
-        <div className="flex items-center justify-between gap-2 mt-5 pt-3 border-t border-zinc-100 dark:border-zinc-800/80 text-xs text-zinc-500 dark:text-zinc-400">
+        <div className="flex items-center justify-between gap-2 mt-5 pt-3 border-t border-zinc-100 text-xs text-zinc-600">
           <span className="flex items-center gap-1.5 font-medium truncate max-w-[140px]">
             <User className="w-3.5 h-3.5 shrink-0" />
             {berita.penulis.nama}

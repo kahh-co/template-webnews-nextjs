@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { kategoriList } from "@/lib/data/kategori";
-import ThemeToggle from "../ui/ThemeToggle";
 import {
   Search,
   Menu,
@@ -53,26 +52,26 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md border-b border-zinc-200/80 dark:border-zinc-800/80 shadow-xs transition-colors duration-300">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-xs">
       {/* Top utility bar */}
-      <div className="hidden md:block bg-zinc-50 dark:bg-zinc-900 border-b border-zinc-200/60 dark:border-zinc-800/60 py-1.5 text-xs text-zinc-500 dark:text-zinc-400">
+      <div className="hidden md:block bg-zinc-50 border-b border-zinc-200/60 py-1.5 text-xs text-zinc-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Clock className="w-3.5 h-3.5 text-red-500" />
-            <span className="font-medium text-zinc-700 dark:text-zinc-300">
+            <span className="font-medium text-zinc-700">
               {currentTime || "Rabu, 16 September 2026"}
             </span>
           </div>
 
-          <div className="flex items-center gap-5">
-            <div className="flex items-center gap-1.5 text-zinc-600 dark:text-zinc-300 font-medium">
+          <div className="hidden lg:flex items-center gap-5 min-w-0">
+            <div className="flex items-center gap-1.5 text-zinc-600 font-medium truncate max-w-[320px] xl:max-w-none">
               <TrendingUp className="w-3.5 h-3.5 text-amber-500" />
               <span>Trending: #IKN #PialaAsia #SatelitNusantara #AllEngland</span>
             </div>
-            <div className="h-3 w-[1px] bg-zinc-300 dark:bg-zinc-700" />
+            <div className="h-3 w-[1px] bg-zinc-300" />
             <Link
               href="/tentang"
-              className="hover:text-red-600 dark:hover:text-red-400 transition-colors"
+              className="hover:text-red-700 transition-colors shrink-0"
             >
               Tentang Redaksi
             </Link>
@@ -93,14 +92,14 @@ export default function Navbar() {
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-1">
-                <span className="font-serif font-black text-xl sm:text-2xl tracking-tight text-zinc-950 dark:text-white">
+                <span className="font-serif font-black text-xl sm:text-2xl tracking-tight text-zinc-950">
                   NUSANTARA
                 </span>
-                <span className="font-serif font-black text-xl sm:text-2xl tracking-tight text-red-600 dark:text-red-500">
+                <span className="font-serif font-black text-xl sm:text-2xl tracking-tight text-red-600">
                   KINI
                 </span>
               </div>
-              <span className="text-[10px] sm:text-[11px] font-medium tracking-widest uppercase text-zinc-500 dark:text-zinc-400 -mt-1 flex items-center gap-1">
+              <span className="text-[10px] sm:text-[11px] font-medium tracking-widest uppercase text-zinc-500 -mt-1 flex items-center gap-1">
                 Portal Berita Terpercaya <Sparkles className="w-2.5 h-2.5 text-amber-500 inline" />
               </span>
             </div>
@@ -114,7 +113,7 @@ export default function Navbar() {
                 placeholder="Cari berita terkini, topik, atau peristiwa..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 text-sm bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full text-zinc-900 dark:text-zinc-100 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white dark:focus:bg-zinc-950 transition-all"
+                className="w-full pl-10 pr-4 py-2 text-sm bg-zinc-100 border border-zinc-200 rounded-full text-zinc-900 placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:bg-white transition-all"
               />
               <Search className="absolute left-3.5 top-2.5 w-4 h-4 text-zinc-400" />
               <button
@@ -132,20 +131,17 @@ export default function Navbar() {
             <button
               onClick={() => setIsSearchOpen(!isSearchOpen)}
               type="button"
-              className="md:hidden p-2 rounded-full text-zinc-600 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none"
+              className="md:hidden p-2 rounded-full text-zinc-600 hover:bg-zinc-100 focus:outline-none"
               aria-label="Cari Berita"
             >
               <Search className="w-5 h-5" />
             </button>
 
-            {/* Dark/Light Toggle */}
-            <ThemeToggle />
-
             {/* Mobile Hamburger Menu */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               type="button"
-              className="md:hidden p-2 rounded-lg text-zinc-700 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 focus:outline-none"
+              className="md:hidden p-2 rounded-lg text-zinc-700 hover:bg-zinc-100 focus:outline-none"
               aria-label="Buka Menu Navigasi"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -163,7 +159,7 @@ export default function Navbar() {
                 placeholder="Cari berita..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-16 py-2 text-sm bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-red-500"
+                className="w-full pl-10 pr-16 py-2 text-sm bg-zinc-100 border border-zinc-200 rounded-lg text-zinc-900 focus:outline-none focus:ring-2 focus:ring-red-500"
               />
               <Search className="absolute left-3 top-2.5 w-4 h-4 text-zinc-400" />
               <button
@@ -178,7 +174,7 @@ export default function Navbar() {
       </div>
 
       {/* Category Navigation Bar (Horizontal scrollable on mobile) */}
-      <nav className="border-t border-zinc-200/70 dark:border-zinc-800/70 bg-zinc-50/50 dark:bg-zinc-900/40">
+      <nav className="border-t border-zinc-200/70 bg-zinc-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center space-x-1 sm:space-x-2 overflow-x-auto no-scrollbar py-2 text-sm font-semibold tracking-wide">
             <Link
@@ -186,7 +182,7 @@ export default function Navbar() {
               className={`px-3.5 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/"
                   ? "bg-red-600 text-white shadow-xs"
-                  : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/70 dark:hover:bg-zinc-800"
+                  : "text-zinc-700 hover:bg-zinc-200/70"
               }`}
             >
               Beranda
@@ -201,7 +197,7 @@ export default function Navbar() {
                   className={`px-3.5 py-1.5 rounded-full transition-all whitespace-nowrap ${
                     isActive
                       ? "bg-red-600 text-white shadow-xs"
-                      : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/70 dark:hover:bg-zinc-800"
+                      : "text-zinc-700 hover:bg-zinc-200/70"
                   }`}
                 >
                   {kat.nama}
@@ -209,14 +205,14 @@ export default function Navbar() {
               );
             })}
 
-            <div className="h-4 w-[1px] bg-zinc-300 dark:bg-zinc-700 mx-1 shrink-0" />
+            <div className="h-4 w-[1px] bg-zinc-300 mx-1 shrink-0" />
 
             <Link
               href="/tentang"
               className={`px-3.5 py-1.5 rounded-full transition-all whitespace-nowrap ${
                 pathname === "/tentang"
                   ? "bg-red-600 text-white shadow-xs"
-                  : "text-zinc-700 dark:text-zinc-300 hover:bg-zinc-200/70 dark:hover:bg-zinc-800"
+                  : "text-zinc-700 hover:bg-zinc-200/70"
               }`}
             >
               Tentang Redaksi
@@ -227,7 +223,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 px-4 py-4 space-y-3 shadow-lg">
+        <div className="md:hidden border-t border-zinc-200 bg-white px-4 py-4 space-y-3 shadow-lg">
           <div className="text-xs font-bold text-zinc-400 uppercase tracking-wider px-2">
             Kategori Berita
           </div>
@@ -235,7 +231,7 @@ export default function Navbar() {
             <Link
               href="/"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg text-sm font-medium bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-600"
+              className="p-2.5 rounded-lg text-sm font-medium bg-zinc-100 text-zinc-900 hover:bg-red-50 hover:text-red-600"
             >
               Beranda
             </Link>
@@ -244,25 +240,25 @@ export default function Navbar() {
                 key={kat.id}
                 href={`/kategori/${kat.slug}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="p-2.5 rounded-lg text-sm font-medium bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-600"
+                className="p-2.5 rounded-lg text-sm font-medium bg-zinc-100 text-zinc-900 hover:bg-red-50 hover:text-red-600"
               >
                 {kat.nama}
               </Link>
             ))}
           </div>
 
-          <div className="border-t border-zinc-100 dark:border-zinc-800 pt-3 flex flex-col gap-2">
+          <div className="border-t border-zinc-100 pt-3 flex flex-col gap-2">
             <Link
               href="/cari"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+              className="p-2.5 rounded-lg text-sm font-medium text-zinc-700 hover:bg-zinc-100"
             >
               Pencarian Berita Lengkap
             </Link>
             <Link
               href="/tentang"
               onClick={() => setMobileMenuOpen(false)}
-              className="p-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-900"
+              className="p-2.5 rounded-lg text-sm font-medium text-zinc-700 hover:bg-zinc-100"
             >
               Tentang Redaksi & Pedoman Media
             </Link>

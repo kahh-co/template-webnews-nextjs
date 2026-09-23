@@ -17,27 +17,27 @@ export default function CategorySection({ kategori, beritaList }: CategorySectio
   const otherItems = beritaList.slice(1, 4);
 
   return (
-    <section className="py-8 border-t border-zinc-200/80 dark:border-zinc-800/80">
+    <section className="py-8 border-t border-zinc-200/80">
       {/* Section Header */}
-      <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-zinc-200 dark:border-zinc-800">
+      <div className="flex items-center justify-between mb-6 pb-2 border-b-2 border-zinc-200">
         <div className="flex items-center gap-2.5">
           <span className={`w-3 h-6 rounded-sm ${kategori.warna.bg}`} />
-          <h2 className="font-serif font-bold text-xl sm:text-2xl text-zinc-900 dark:text-white">
+          <h2 className="font-serif font-bold text-xl sm:text-2xl text-zinc-900">
             {kategori.nama}
           </h2>
         </div>
 
         <Link
           href={`/kategori/${kategori.slug}`}
-          className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-zinc-600 hover:text-red-600 dark:text-zinc-400 dark:hover:text-red-400 transition-colors"
+          className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-zinc-600 hover:text-red-600 transition-colors"
         >
           <span>Lihat Semua</span>
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
       </div>
 
-      {/* Grid Layout: 1 Hero/Large Card Left + 3 Cards Right (or responsive grid) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      {/* Grid Layout: 1 Hero/Large Card Left + 2 Cards Right */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {/* Featured Card in this Category */}
         <div className="md:col-span-2 lg:col-span-2">
           <NewsCard berita={mainItem} variant="default" className="h-full" />

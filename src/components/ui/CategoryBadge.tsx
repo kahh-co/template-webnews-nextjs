@@ -25,19 +25,19 @@ export default function CategoryBadge({
     lg: "text-sm font-bold px-3 py-1.5 rounded-md tracking-wider uppercase",
   };
 
-  // Color mapping based on category slug
+  // Color mapping based on category slug (light-only, kontras aman di atas putih)
   const colorMap: Record<string, string> = {
-    nasional: "bg-red-600 text-white dark:bg-red-600 dark:text-white",
-    internasional: "bg-blue-600 text-white dark:bg-blue-600 dark:text-white",
-    ekonomi: "bg-emerald-600 text-white dark:bg-emerald-600 dark:text-white",
-    teknologi: "bg-indigo-600 text-white dark:bg-indigo-600 dark:text-white",
-    olahraga: "bg-amber-600 text-white dark:bg-amber-600 dark:text-white",
-    hiburan: "bg-pink-600 text-white dark:bg-pink-600 dark:text-white",
+    nasional: "bg-red-700 text-white",
+    internasional: "bg-blue-700 text-white",
+    ekonomi: "bg-emerald-700 text-white",
+    teknologi: "bg-indigo-700 text-white",
+    olahraga: "bg-amber-700 text-white",
+    hiburan: "bg-pink-700 text-white",
   };
 
   const badgeStyle =
     colorMap[categorySlug.toLowerCase()] ||
-    "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900";
+    "bg-zinc-800 text-white";
 
   const content = (
     <span

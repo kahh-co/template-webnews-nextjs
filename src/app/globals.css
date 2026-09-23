@@ -1,27 +1,21 @@
 @import "tailwindcss";
 
+/* Kunci light mode: dark: variant dimatikan total.
+   Tanpa ini, Tailwind v4 memakai prefers-color-scheme OS sehingga
+   teman yang OS-nya gelap dapat tema campur (teks nyampur background). */
+@custom-variant dark (&:where(.dark-never, .dark-never *));
+
 @layer base {
   :root {
+    color-scheme: light;
     --background: #ffffff;
-    --foreground: #09090b;
+    --foreground: #111827;
     --card: #ffffff;
-    --card-foreground: #09090b;
-    --border: #e4e4e7;
-    --muted: #f4f4f5;
-    --muted-foreground: #71717a;
-    --primary: #dc2626;
-    --primary-foreground: #ffffff;
-  }
-
-  .dark {
-    --background: #09090b;
-    --foreground: #f4f4f5;
-    --card: #121215;
-    --card-foreground: #f4f4f5;
-    --border: #27272a;
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --primary: #ef4444;
+    --card-foreground: #111827;
+    --border: #e5e7eb;
+    --muted: #f3f4f6;
+    --muted-foreground: #4b5563;
+    --primary: #b91c1c;
     --primary-foreground: #ffffff;
   }
 }
@@ -55,11 +49,27 @@
 }
 
 /* Typography polish */
+html {
+  color-scheme: light;
+}
+
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: #ffffff;
+  color: #111827;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Pengganti minimal @tailwindcss/typography (plugin belum diinstall):
+   pastikan isi artikel tetap lega dan nyaman dibaca di light mode. */
+.prose p {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+  color: #1f2937;
 }
 
 h1, h2, h3, h4, .font-serif {

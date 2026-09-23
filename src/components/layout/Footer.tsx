@@ -44,7 +44,7 @@ export default function Footer() {
               </p>
             </div>
 
-            <div className="w-full lg:w-auto min-w-[320px] sm:min-w-[400px]">
+            <div className="w-full lg:w-auto lg:min-w-[400px] lg:max-w-md">
               {subscribed ? (
                 <div className="flex items-center gap-2 p-3 bg-emerald-950/80 border border-emerald-800 text-emerald-300 rounded-xl text-sm font-medium animate-fadeIn">
                   <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />

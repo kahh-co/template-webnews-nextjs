@@ -63,13 +63,13 @@ export default function TentangPage() {
   return (
     <div className="space-y-12 max-w-5xl mx-auto">
       {/* Breadcrumb */}
-      <nav className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+      <nav className="flex items-center gap-2 text-xs text-zinc-500">
         <Link href="/" className="hover:text-red-600 flex items-center gap-1">
           <Home className="w-3.5 h-3.5" />
           Beranda
         </Link>
         <span>/</span>
-        <span className="font-semibold text-zinc-900 dark:text-zinc-100">
+        <span className="font-semibold text-zinc-900">
           Tentang Redaksi
         </span>
       </nav>
@@ -92,26 +92,26 @@ export default function TentangPage() {
 
       {/* Visi & Misi */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 shadow-xs">
-          <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center">
+        <div className="p-8 rounded-2xl bg-white border border-zinc-200 space-y-4 shadow-xs">
+          <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
             <Award className="w-6 h-6" />
           </div>
-          <h2 className="font-serif font-bold text-2xl text-zinc-900 dark:text-white">
+          <h2 className="font-serif font-bold text-2xl text-zinc-900">
             Visi Kami
           </h2>
-          <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-300 leading-relaxed">
+          <p className="text-sm sm:text-base text-zinc-600 leading-relaxed">
             Menjadi platform berita dan rujukan analitis digital terdepan di Asia Tenggara yang menjunjung tinggi kebenaran, mencerdaskan kehidupan bangsa, serta mempererat persatuan masyarakat dalam bingkai kebinekaan.
           </p>
         </div>
 
-        <div className="p-8 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-4 shadow-xs">
-          <div className="w-12 h-12 rounded-xl bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400 flex items-center justify-center">
+        <div className="p-8 rounded-2xl bg-white border border-zinc-200 space-y-4 shadow-xs">
+          <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
             <ShieldCheck className="w-6 h-6" />
           </div>
-          <h2 className="font-serif font-bold text-2xl text-zinc-900 dark:text-white">
+          <h2 className="font-serif font-bold text-2xl text-zinc-900">
             Misi Redaksi
           </h2>
-          <ul className="space-y-2 text-sm sm:text-base text-zinc-600 dark:text-zinc-300">
+          <ul className="space-y-2 text-sm sm:text-base text-zinc-600">
             <li className="flex items-start gap-2">
               <CheckCircle className="w-4 h-4 text-red-600 mt-1 shrink-0" />
               <span>Menghadirkan liputan komprehensif yang cepat tanpa mengorbankan akurasi dan verifikasi data.</span>
@@ -135,7 +135,7 @@ export default function TentangPage() {
             <Users className="w-4 h-4" />
             Struktur Organisasi
           </div>
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-zinc-900 dark:text-white mt-1">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-zinc-900 mt-1">
             Susunan Dewan Redaksi
           </h2>
         </div>
@@ -144,9 +144,9 @@ export default function TentangPage() {
           {redaksiTeam.map((member) => (
             <div
               key={member.nama}
-              className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-3 text-center sm:text-left hover:border-red-500/40 transition-colors shadow-xs"
+              className="p-6 rounded-2xl bg-white border border-zinc-200 space-y-3 text-center sm:text-left hover:border-red-500/40 transition-colors shadow-xs"
             >
-              <div className="relative w-20 h-20 mx-auto sm:mx-0 rounded-full overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+              <div className="relative w-20 h-20 mx-auto sm:mx-0 rounded-full overflow-hidden bg-zinc-100">
                 <Image
                   src={member.avatar}
                   alt={member.nama}
@@ -155,14 +155,14 @@ export default function TentangPage() {
                 />
               </div>
               <div>
-                <h3 className="font-serif font-bold text-base sm:text-lg text-zinc-900 dark:text-white">
+                <h3 className="font-serif font-bold text-base sm:text-lg text-zinc-900">
                   {member.nama}
                 </h3>
-                <p className="text-xs font-semibold text-red-600 dark:text-red-400">
+                <p className="text-xs font-semibold text-red-600">
                   {member.peran}
                 </p>
               </div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+              <p className="text-xs text-zinc-500 leading-relaxed">
                 {member.bio}
               </p>
             </div>
@@ -171,11 +171,11 @@ export default function TentangPage() {
       </section>
 
       {/* Pedoman Pemberitaan Media Siber */}
-      <section id="pedoman" className="space-y-6 p-8 rounded-3xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800">
-        <h2 className="font-serif font-bold text-2xl text-zinc-900 dark:text-white">
+      <section id="pedoman" className="space-y-6 p-8 rounded-3xl bg-zinc-50 border border-zinc-200">
+        <h2 className="font-serif font-bold text-2xl text-zinc-900">
           Pedoman Pemberitaan Media Siber (PPMS)
         </h2>
-        <div className="prose prose-sm dark:prose-invert text-zinc-600 dark:text-zinc-300 space-y-4 max-w-none">
+        <div className="prose prose-sm text-zinc-600 space-y-4 max-w-none">
           <p>
             Kemerdekaan berpendapat, kemerdekaan berekspresi, dan kemerdekaan pers adalah hak asasi manusia yang dilindungi oleh Pancasila, Undang-Undang Dasar 1945, dan Deklarasi Universal Hak Asasi Manusia PBB.
           </p>
@@ -194,40 +194,40 @@ export default function TentangPage() {
       {/* Kontak & Alamat Kantor */}
       <section id="kontak" className="space-y-6 pt-4">
         <div className="border-b-2 border-red-600 pb-3">
-          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-zinc-900 dark:text-white">
+          <h2 className="font-serif font-bold text-2xl sm:text-3xl text-zinc-900">
             Hubungi Redaksi & Layanan Pengaduan
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
+          <div className="p-6 rounded-2xl bg-white border border-zinc-200 space-y-2">
             <MapPin className="w-5 h-5 text-red-600" />
-            <h4 className="font-serif font-bold text-base text-zinc-900 dark:text-white">
+            <h4 className="font-serif font-bold text-base text-zinc-900">
               Kantor Pusat Redaksi
             </h4>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            <p className="text-xs text-zinc-500 leading-relaxed">
               Gedung Pers Nusantara Lt. 8, Jl. Medan Merdeka Barat No. 12, Jakarta Pusat 10110, Indonesia
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
+          <div className="p-6 rounded-2xl bg-white border border-zinc-200 space-y-2">
             <Mail className="w-5 h-5 text-red-600" />
-            <h4 className="font-serif font-bold text-base text-zinc-900 dark:text-white">
+            <h4 className="font-serif font-bold text-base text-zinc-900">
               Surat Elektronik (Email)
             </h4>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            <p className="text-xs text-zinc-500 leading-relaxed">
               Redaksi: <span className="text-red-600 font-semibold">redaksi@nusantarakini.id</span><br />
               Pengaduan & Hak Jawab: <span className="text-red-600 font-semibold">ombudsman@nusantarakini.id</span><br />
               Iklan & Kerja Sama: <span className="text-red-600 font-semibold">iklan@nusantarakini.id</span>
             </p>
           </div>
 
-          <div className="p-6 rounded-2xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 space-y-2">
+          <div className="p-6 rounded-2xl bg-white border border-zinc-200 space-y-2">
             <Phone className="w-5 h-5 text-red-600" />
-            <h4 className="font-serif font-bold text-base text-zinc-900 dark:text-white">
+            <h4 className="font-serif font-bold text-base text-zinc-900">
               Telepon & WhatsApp Media
             </h4>
-            <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+            <p className="text-xs text-zinc-500 leading-relaxed">
               Hotline Redaksi: (021) 384-9000<br />
               WhatsApp Pengaduan: +62 812-8900-9900<br />
               Jam Operasional: 24 Jam (Liputan Khusus)

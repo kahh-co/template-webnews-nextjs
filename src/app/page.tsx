@@ -34,17 +34,17 @@ export default function HomePage() {
         <div className="lg:col-span-8 space-y-10">
           {/* Section Header: Berita Terbaru */}
           <div>
-            <div className="flex items-center justify-between pb-3 mb-6 border-b-2 border-red-600 dark:border-red-500">
+            <div className="flex items-center justify-between pb-3 mb-6 border-b-2 border-red-600">
               <div className="flex items-center gap-2.5">
-                <div className="p-1.5 rounded-lg bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400">
+                <div className="p-1.5 rounded-lg bg-red-100 text-red-600">
                   <Newspaper className="w-5 h-5" />
                 </div>
-                <h2 className="font-serif font-bold text-2xl text-zinc-900 dark:text-white">
+                <h2 className="font-serif font-bold text-2xl text-zinc-900">
                   Kabar Terbaru & Terhangat
                 </h2>
               </div>
 
-              <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+              <span className="hidden sm:inline-flex items-center gap-1 text-xs font-semibold text-zinc-500">
                 <Sparkles className="w-3.5 h-3.5 text-amber-500" />
                 Diperbarui Setiap Jam
               </span>
@@ -56,7 +56,7 @@ export default function HomePage() {
                 <NewsCard berita={latestNews[0]} variant="horizontal" />
               )}
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 pt-2">
                 {latestNews.slice(1, 4).map((item) => (
                   <NewsCard key={item.id} berita={item} variant="default" />
                 ))}
@@ -80,7 +80,7 @@ export default function HomePage() {
         </div>
 
         {/* Right Column: Sticky Sidebar on Desktop */}
-        <div className="lg:col-span-4 sticky top-28">
+        <div className="lg:col-span-4 lg:sticky lg:top-28 self-start">
           <Sidebar beritaPopuler={populer} />
         </div>
       </div>

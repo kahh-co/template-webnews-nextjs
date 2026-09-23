@@ -50,8 +50,8 @@ export default function RootLayout({
   const breakingNews = getBeritaTrending(6);
 
   return (
-    <html lang="id" className={`${inter.variable} ${playfair.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 selection:bg-red-500 selection:text-white">
+    <html lang="id" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-white text-zinc-900 selection:bg-red-600 selection:text-white">
         <ThemeProvider>
           <Navbar />
           <BreakingNewsTicker beritaItems={breakingNews} />
