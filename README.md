@@ -1,4 +1,4 @@
-# Product Requirements Document (PRD)
+
 ## Website Berita Harian — Next.js Template Modern
 **Platform Target:** Antigravity  
 **Framework:** Next.js 14 (App Router)  
