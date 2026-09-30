@@ -1,0 +1,8 @@
+{
+  "$schema": "https://scaffdev.vercel.app/schemas/scaff.template.json",
+  "name": "Template Webnews",
+  "slug": "template-webnews-nextjs",
+  "framework": "nextjs",
+  "provides": {},
+  "removalGuides": {}
+}
